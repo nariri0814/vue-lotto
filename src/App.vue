@@ -3,7 +3,6 @@
     <LottoGenerator />
   </div>
 </template>
-
 <script>
 import LottoGenerator from './LottoGenerator.vue'
 export default {
