@@ -63,12 +63,12 @@
         for(let i = 0; i < this.winNumbers.length - 1; i++) {
           timeouts[i] = setTimeout(() => {
             this.winBalls.push(this.winNumbers[i])
-          },(i + 1) * 1100)
+          },(i + 1) * 900)
         }
         timeouts[6] = setTimeout(() => {
           this.bonus = this.winNumbers[6];
           this.redo = true;
-        }, 8000)
+        }, 7500)
       },
     }, 
     mounted() {
