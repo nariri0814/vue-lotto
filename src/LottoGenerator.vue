@@ -1,8 +1,8 @@
 <template>
 <!-- 로또볼 생성 -->
 <div v-if="!show" class="init-wrap">
-  <img src=""/>
-  <button @click="[onClickBtn(), onClkickRedo()]" class="btn">로또 추첨하기</button>
+  <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20160704_196%2Fglossyboxkor_1467597567958cQd7i_GIF%2F15.gif&type=sc960_832_gif"/>
+  <button @click="onClickBtn" class="btn">로또 추첨하기</button>
 </div>
 <div v-show="show" class="show-wrap">
   <div class="ball-wrap">
@@ -15,7 +15,7 @@
     <div class="bonus-txt">보너스</div>
     <lotto-ball v-if="bonus" :number="bonus"></lotto-ball>
   </div>
-  <button v-if="redo" @click="onClickRedo" class="btn-again">AGAIN</button>
+  <button v-if="redo" @click="onClickRedo" class="btn">AGAIN</button>
 </div>
 </template>
 
@@ -40,16 +40,17 @@
     },
     data() {
       return {
+        show: false,
         winNumbers: getWinNumbers(),
         winBalls: [],
         bonus: null,
         redo: false,
-        show: false
       };
     },
     methods: {
       onClickBtn() {
         this.show = true;
+        this.showBalls();
       },
       onClickRedo() {
         this.winNumbers = getWinNumbers();
@@ -62,16 +63,16 @@
         for(let i = 0; i < this.winNumbers.length - 1; i++) {
           timeouts[i] = setTimeout(() => {
             this.winBalls.push(this.winNumbers[i])
-          },(i + 1) * 1000)
+          },(i + 1) * 1100)
         }
         timeouts[6] = setTimeout(() => {
           this.bonus = this.winNumbers[6];
           this.redo = true;
-        }, 7000)
+        }, 8000)
       },
     }, 
     mounted() {
-      this.showBalls();
+      // this.showBalls();
     },
     beforeUnmount() {
       timeouts.forEach((t) => {
@@ -97,7 +98,10 @@
   }
   .init-wrap {
     width: 100%;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   .show-wrap {
     width: 100%;
@@ -105,20 +109,27 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    font-size: 30px;
+    font-size: 2.5rem;
   }
+
+  .ball-wrap, .bonus-wrap {
+    width: 70%;
+    text-align: center;
+    min-height: 20%;
+  }
+
   .btn {
     display: block;
-    margin: 0 auto;
+    margin: 40px auto;
     width: 230px;
     padding: 17px;
     outline: none;
     border: none;
-    background: darkslateblue;
+    background: slategray;
     color: #fff;
     border-radius: 20px;
     box-shadow: rgb(0 0 0 / 12%) 0px 3px 6px -4px, rgb(0 0 0 / 8%) 0px 6px 16px, rgb(0 0 0 / 5%) 0px 9px 28px 8px;
-    font-size: 23px;
+    font-size: 1.5rem;
     font-weight: 500;
   }
 
@@ -128,15 +139,5 @@
 
   .bonus-txt {
     margin-bottom: 20px;
-  }
-
-  .btn-again {
-    padding: 10px 17px;
-    margin-top: 20px;
-    background: slategray;
-    border: none;
-    border-radius: 8px;
-    color: #fff;
-    font-weight: 900;
   }
 </style>

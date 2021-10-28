@@ -14,15 +14,15 @@
       background() {
         let background;
         if(this.number <= 10) {
-          background = '#f0c633';
+          background = '#f5bb32';
         } else if(this.number <= 20) {
-          background = '#87c7f0'
+          background = '#8cc6e7'
         } else if(this.number <= 30) {
-          background = '#ea7a75'
+          background = '#f18d80'
         } else if(this.number <= 40) {
-          background = '#abacac'
+          background = '#a7a2de'
         } else {
-          background = '#bad852'
+          background = '#6bce9e'
         }
         return {
           background,
@@ -34,15 +34,17 @@
 
 <style>
   .ball {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     display: inline-block;
-    /* border: 1px solid #000; */
     border-radius: 50%;
-    line-height: 40px;
+    line-height: 60px;
     font-size: 20px;
     text-align: center;
     margin-right: 20px;
     margin-bottom: 10px;
+  }
+  .ball:last-child {
+    margin: 0;
   }
 </style>
