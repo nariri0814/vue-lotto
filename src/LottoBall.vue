@@ -14,15 +14,15 @@
       background() {
         let background;
         if(this.number <= 10) {
-          background = 'red';
+          background = '#f0c633';
         } else if(this.number <= 20) {
-          background = 'orange'
+          background = '#87c7f0'
         } else if(this.number <= 30) {
-          background = 'yellow'
+          background = '#ea7a75'
         } else if(this.number <= 40) {
-          background = 'green'
+          background = '#abacac'
         } else {
-          background = 'blue'
+          background = '#bad852'
         }
         return {
           background,
@@ -37,11 +37,12 @@
     width: 40px;
     height: 40px;
     display: inline-block;
-    border: 1px solid #000;
-    border-radius: 20px;
+    /* border: 1px solid #000; */
+    border-radius: 50%;
     line-height: 40px;
     font-size: 20px;
     text-align: center;
     margin-right: 20px;
+    margin-bottom: 10px;
   }
 </style>
